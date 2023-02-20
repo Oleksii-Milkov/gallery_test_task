@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gallery_test_task/providers/dio_client.dart';
 import 'package:gallery_test_task/providers/gallery_provider.dart';
 import 'package:gallery_test_task/screens/home_page/widgets/gallery_grid_view.dart';
+import 'package:gallery_test_task/screens/home_page/widgets/pagination_block.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,28 +28,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Gallery'),
-        actions: [
-          Consumer<GalleryProvider>(builder: (context, galleryProvider, child) {
-            return Row(
-              children: [
-                IconButton(
-                  onPressed: galleryProvider.currentPage > 1
-                      ? () => galleryProvider.currentPage--
-                      : null,
-                  icon: const Icon(Icons.arrow_back_ios_new_rounded),
-                ),
-                Center(
-                  child: Text('${galleryProvider.currentPage}'),
-                ),
-                IconButton(
-                  onPressed: () => galleryProvider.currentPage++,
-                  icon: const Icon(
-                    Icons.arrow_forward_ios_rounded,
-                  ),
-                ),
-              ],
-            );
-          })
+        actions: const [
+          PaginationBlock(),
         ],
       ),
       body: FutureBuilder(
