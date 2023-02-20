@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:gallery_test_task/providers.dart';
+import 'package:gallery_test_task/screens/home_page/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const Providers(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -9,10 +15,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
-      home: Scaffold(),
+      theme: ThemeData(
+        cardTheme: CardTheme(
+          elevation: 3,
+          clipBehavior: Clip.antiAlias,
+          margin: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+        ),
+      ),
+      home: const HomePage(),
     );
   }
 }
-
