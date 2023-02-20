@@ -35,14 +35,14 @@ class PhotoPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    photo.user.name,
+                    photo.user.name ?? '',
                     style: const TextStyle(color: Colors.white, fontSize: 24),
                   ),
                   Row(
                     children: const [SizedBox(height: 12)],
                   ),
                   Text(
-                    photo.description.capitalize(),
+                    photo.description?.capitalize() ?? '',
                     style: const TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ],
